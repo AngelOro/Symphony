@@ -38,6 +38,7 @@
                             <li><a href="Empresa.jsp" class="list-group-item list-group-item-action bg-light">Empresas</a></li>
                             <li><a href="Artista.jsp" class="list-group-item list-group-item-action bg-light">Artistas</a></li>
                             <li><a href="Empresa.jsp" class="list-group-item list-group-item-action bg-light">Ventas</a></li>
+                            <li><a href="Operario.jsp" class="list-group-item list-group-item-action bg-light">Operarios</a></li>
                         </ul>
                     </li>
                     <li class="menu">

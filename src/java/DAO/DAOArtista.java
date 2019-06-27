@@ -6,7 +6,6 @@
 package DAO;
 
 import Modelo.Artista;
-import Modelo.Empresa;
 import Utilidades.DBUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

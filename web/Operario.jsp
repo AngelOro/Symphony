@@ -1,13 +1,13 @@
 <%-- 
-    Document   : Artista
-    Created on : 22-jun-2019, 14:57:48
+    Document   : Operario
+    Created on : 26-jun-2019, 11:03:07
     Author     : Angelica
 --%>
 
 <%@page import="java.util.Iterator"%>
-<%@page import="Modelo.Empresa"%>
-<%@page import="Modelo.Artista"%>
+<%@page import="Modelo.Operario"%>
 <%@page import="java.util.List"%>
+<%@page import="DAO.DAOOperario"%>
 <%@page import="DAO.DAOArtista"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>JSP Page</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
         <link rel="stylesheet" href="css/simple-sidebar.css" type="text/css">
         <link rel="stylesheet" href="css/bootstrap-grid.css" type="text/css">
@@ -96,44 +96,40 @@
                                     <li class="breadcrumb-item">
                                         <a href="#">Gestión</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Artistas</li>
+                                    <li class="breadcrumb-item active">Operarios</li>
                                 </ol>
                             </div>
-                            <center><h2 class="text-center">Gestión de Artistas</h2></center><br><br>
+                            <center><h2 class="text-center">Gestión de Operarios</h2></center><br><br>
                             <div class="row row-table col-lg-11" style="margin-top:0px;">
                                 <div class="col-lg-3 bottom">
-                                    <a href="ServletArtista?opcion=crearArtista"><button id="addArtista" type="button" class="btn btn-info">Agregar Artista</button></a>
+                                    <a href="ServletUsuario?opcion=crearOperario"><button id="addOperario" type="button" class="btn btn-info">Agregar Operario</button></a>
                                 </div>
                                 <table class="table table-condensed">
                                     <thead>
                                         <tr class="cart_menu">
-                                            <th class="text-center">Nombre </th>
-                                            <th class="text-center">Empresa Difusora</th>
-                                            <th class="text-center">Correo</th>
-                                            <th class="text-center">Telefono contacto</th>
+                                            <th colspan="2" class="text-center">Nombre  </th>
+                                            <th class="text-center">Documento</th>
                                             <th class="text-center">Estado</th>
                                             <th ></th>
                                         </tr>
                                     </thead>
                                     <%
-                                        DAOArtista artista = new DAOArtista();
-                                        List<Artista> listaArtista = artista.listarArtistas();
-                                        Iterator<Artista> iter = listaArtista.iterator();
-                                        Artista art = null;
+                                            DAOOperario operario = new DAOOperario();
+                                            List<Operario> listaOperario = operario.listarOperario();
+                                        Iterator<Operario> iter = listaOperario.iterator();
+                                        Operario ope = null;
                                         while (iter.hasNext()) {
-                                            art = iter.next();
+                                            ope = iter.next();
  
                                     %> 
                                     <tbody style="border-collapse: 0;">
                                         <tr>
-                                            <td id="nombreArt" class="text-center"><%= art.getNombreArtista() %></td>
-                                            <td id="empDifusora" class="text-center"><%= art.getNombreEmp() %></td>
-                                            <td id="correoArt" class="text-center"><%= art.getCorreo()  %></td>
-                                            <td id="telefonoArt" class="text-center" ><%= art.getTelefono() %></td>
-                                            <td id="estadoArt" class="text-center"><%= art.getEstado() %></td>
-
+                                            <td id="nombreOpe" class="text-center"><%= ope.getPrimerNombre() %></td>
+                                            <td id="apellidoOpe" class="text-center"><%= ope.getPrimerApellido() %></td>
+                                            <td id="empDifusora" class="text-center"><%= ope.getNumDocumento() %></td>
+                                            <td id="empDifusora" class="text-center"><%= ope.getEstado() %></td>
                                             <td class="text-center">
-                                                <a id="editarArt" class="btn btn-warning" href="ServletArtista?opcion=editar&IdArtista=<%= art.getIdArtista() %>">Editar</a>
+                                                <a id="editarArt" class="btn btn-warning" href="ServletUsuario?opcion=editar&IdUsuario=<%= ope.getIdUsuario() %>">Editar</a>
                                                 
                                             </td>
                                         </tr>
@@ -158,5 +154,6 @@
         <script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.js" type="text/javascript"></script>
 
+   
     </body>
 </html>
