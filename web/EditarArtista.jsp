@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
         <link rel="stylesheet" href="css/simple-sidebar.css" type="text/css">
         <link rel="stylesheet" href="css/bootstrap-grid.css" type="text/css">
+        <script defer src="js/validacion/EditarArtista.js" type="text/javascript"></script>
 
     </head>
     <body>
@@ -35,6 +36,7 @@
                             <li><a href="Empresa.jsp" class="list-group-item list-group-item-action bg-light">Empresas</a></li>
                             <li><a href="Artista.jsp" class="list-group-item list-group-item-action bg-light">Artistas</a></li>
                             <li><a href="Empresa.jsp" class="list-group-item list-group-item-action bg-light">Ventas</a></li>
+                            <li><a href="Operario.jsp" class="list-group-item list-group-item-action bg-light">Operarios</a></li>
                         </ul>
                     </li>
                     <li class="menu">
@@ -105,7 +107,7 @@
                                     <div class="form-inline">
                                         <label for="idArtista" style="display: none;">Id Artista </label>
                                         <div class="col-sm-6"> 
-                                            <% out.println("<input class='form-control' type='text' name='idArtista' id='idArtista' readonly value='"
+                                            <% out.println("<input class='form-control' type='number' name='idArtista' id='idArtista' readonly value='"
                                                         + a.getIdArtista() + "'/><br>"); %> 
                                         </div>
                                     </div>
@@ -123,7 +125,7 @@
 
                                                 <%
                                                     List<Empresa> listaEmpresa = (List<Empresa>) request.getAttribute("listaEmpresa");
-                                                    out.println("<option >Seleccionar: </option>");
+                                                    out.println("<option value='0' >Seleccionar: </option>");
                                                     for (Empresa e : listaEmpresa) {
                                                         if (e.getIdEmpresa() == a.getIdEmpresa()) {
                                                             out.println("<option value='" + e.getIdEmpresa()
@@ -148,7 +150,7 @@
                                     <div class="form-inline">
                                         <label class="control-label col-sm-5" for="phoneArt">Telefono contacto:</label>
                                         <div class="col-sm-6"> 
-                                            <% out.println("<input class='form-control' type='text' name='phoneArt' id='phoneArt' value='"
+                                            <% out.println("<input class='form-control' type='number' name='phoneArt' id='phoneArt' value='"
                                                          + a.getTelefono() + "'/><br>"); %>
                                         </div>
                                     </div>
@@ -170,7 +172,7 @@
                                     <div class="form-group modal-footer"> 
                                         <div class="col-sm-offset-3 col-sm-9">
                                             <!--                                    <button type="submit" class="btn btn-info" >Registrar</button>-->
-                                            <input class="btn btn-primary" type="submit" name="enviarArt" value="Editar">
+                                            <input class="btn btn-primary" type="submit" id= "enviarArt" name="enviarArt" value="Editar">
                                             <a href="ServletArtista?opcion=listarArtistas"><button id="cancelEdit" type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button></a>
                                         </div>
                                     </div>

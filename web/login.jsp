@@ -23,19 +23,23 @@
                             <div class="row">
                                 <div class="col-md-9 col-lg-8 mx-auto">
                                     <h3 class="login-heading mb-4">¡Bienvenido a Poli Symphony!</h3>
-                                    <form action="Empresa.jsp">
+                                    <form method="post" class="login" id="login" action="Empresa.jsp">
+                                    
+                                        <label for="idUsuario" style="display: none;">Id Usuario </label>
+                                        <input type="hidden" name="idUsuario" id="idUsuario" value="0" >
                                         <div class="form-label-group">
-                                            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                                            <label for="inputEmail">Email address</label>
+                                            <input type="text" id="userName" class="form-control" placeholder="Nombre Usuario" required autofocus>
+                                            <label for="userName">Nombre Usuario</label>
                                         </div>
 
                                         <div class="form-label-group">
-                                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                                            <label for="inputPassword">Password</label>
+                                            <input type="password" id="clave" class="form-control" placeholder="Clave" required>
+                                            <label for="clave">Clave</label>
                                         </div>
 
-                                        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign in</button>
-                                       
+                                        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Ingresar</button>
+                                        
+
                                     </form>
                                 </div>
                             </div>

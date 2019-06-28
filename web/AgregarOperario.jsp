@@ -32,8 +32,8 @@
                         <ul class="sub-menu">
                             <li><a href="Empresa.jsp" class="list-group-item list-group-item-action bg-light">Empresas</a></li>
                             <li><a href="Artista.jsp" class="list-group-item list-group-item-action bg-light">Artistas</a></li>
-                            <li><a href="Operario.jsp" class="list-group-item list-group-item-action bg-light">Operarios</a></li>
                             <li><a href="Empresa.jsp" class="list-group-item list-group-item-action bg-light">Ventas</a></li>
+                            <li><a href="Operario.jsp" class="list-group-item list-group-item-action bg-light">Operarios</a></li>
                         </ul>
                     </li>
                     <li class="menu">
@@ -150,7 +150,7 @@
                                     <div class="form-inline">
                                         <label class="control-label col-sm-5" for="documento">Documento</label>
                                         <div class="col-sm-6"> 
-                                            <input type="text" class="form-control" id="documento" name="documento" required>
+                                            <input type="number" class="form-control" id="documento" name="documento" required>
                                         </div>
                                     </div>
                                     <div class="form-inline">

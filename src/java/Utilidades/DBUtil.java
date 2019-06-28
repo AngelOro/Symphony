@@ -9,8 +9,11 @@ import java.util.logging.Logger;
 public class DBUtil {
 
     private static Connection conexion = null;
-
+    
     public static Connection getConexion() {
+    if(conexion != null){
+        return conexion;
+    }
         try {
             //  Carga el driver de la base de datos
             Class.forName("oracle.jdbc.OracleDriver");

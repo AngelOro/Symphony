@@ -7,6 +7,7 @@ package DAO;
 
 import Modelo.Operario;
 import Modelo.TipoOperacion;
+import Modelo.Usuario;
 import Utilidades.DBUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -258,5 +259,26 @@ public class DAOOperario {
             descripcion = rs.getString("DESCRIPCION");
         }
         return descripcion;
+    }
+    
+    public Usuario VerificarUsuario(String usuario) throws SQLException {
+        String sql = "SELECT USUARIO, CLAVE FROM TBL_USUARIO WHERE USUARIO = ?";
+        
+        PreparedStatement ps = conexion.prepareStatement(sql);
+
+        ps.setString(1, usuario);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+
+         
+            usuario = rs.getString("USUARIO");
+            String clave = rs.getString("CLAVE");
+            
+            Usuario u = new Usuario (usuario, clave);
+            return u;
+        }
+
+        return null;
     }
 }

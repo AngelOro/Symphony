@@ -1,24 +1,9 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-
-
-//var nombreAst = document.getElementById("nombreAst");
-//var nitAst = document.getElementById("nitAst");
-//var telefonoAst = document.getElementById("telefonoAst");
-//var valorAst = document.getElementById("valorOperacion");
-//var tipoAst = document.getElementById("tipoOperacion");
-
 function validate() {
     var nombreEmpresa = document.getElementById("nombreEmp").value;
     var nit = document.getElementById("nit").value;
     var telefono = document.getElementById("telefono").value;
-    var tOperacion = document.getElementById("tipoOperacion").value;
-
+    var tOperacion = $("select option:selected").val();
+    
     var camposValidos = true;
     if (nombreEmpresa.length < 3) {
         camposValidos = false;
@@ -39,9 +24,9 @@ function validate() {
         alert("El telefono debe ser de 10 digitos");
 
     }
-    if (tOperacion.value == "Selecionar: ") {
-        
-        alert("Por favor seleccionar un tipo de operacion");
+   if (tOperacion == "0" ){
+        camposValidos = false;
+        alert("Seleccionar empresa");
     }
     return camposValidos;
 

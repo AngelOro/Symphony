@@ -1,26 +1,25 @@
 <%-- 
-    Document   : AgregarEmpresa
-    Created on : 22-jun-2019, 2:12:51
+    Document   : Ventas
+    Created on : 27-jun-2019, 15:24:12
     Author     : Angelica
 --%>
 
-<%@page import="java.util.Iterator"%>
-<%@page import="Modelo.TipoOperacion"%>
-<%@page import="java.util.List"%>
-<%@page import="DAO.DAOTipoOperacion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>JSP Page</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
         <link rel="stylesheet" href="css/simple-sidebar.css" type="text/css">
         <link rel="stylesheet" href="css/bootstrap-grid.css" type="text/css">
-        <script defer src="js/validacion/Empresa.js" type="text/javascript"></script>
+
+
+
     </head>
-     
     <body>
         <div class="d-flex" id="wrapper">
 
@@ -56,7 +55,7 @@
             <div id="page-content-wrapper">
 
                 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-
+                    
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -84,7 +83,7 @@
                         </ul>
                     </div>
                 </nav>
-                <section id="main-content">
+                 <section id="main-content">
                     <section id="wrapper">
                         <div class="row">
                             <div class="col-lg-12">
@@ -92,89 +91,68 @@
                                     <li class="breadcrumb-item">
                                         <a href="#">Gestión</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Empresas</li>
+                                    <li class="breadcrumb-item active">Ventas</li>
                                 </ol>
                             </div>
-                            <center><h2 class="text-center">Crear Empresa</h2></center><br><br>
+                            <center><h2 class="text-center">Gestión de Ventas</h2></center><br><br>
                             <div class="row row-table col-lg-11" style="margin-top:0px;">
+                                <div class="col-lg-3 bottom">
+                                    <a href="ServletArtista?opcion=crearArtista"><button id="addArtista" type="button" class="btn btn-info">Agregar Artista</button></a>
+                                </div>
+                                <table class="table table-condensed">
+                                    <thead>
+                                        <tr class="cart_menu">
+                                            <th class="text-center">Nombre Artista </th>
+                                            <th class="text-center">Empresa Difusora</th>
+                                            <th class="text-center">Valor Operación</th>
+                                            <th class="text-center">Cantidad Operaciones</th>
+                                            <th class="text-center">Total Venta</th>
+                                            <th class="text-center">Fecha Venta</th>
+                                            <th ></th>
+                                        </tr>
+                                    </thead>
+                                    <%--
+                                        DAOArtista artista = new DAOArtista();
+                                        List<Artista> listaArtista = artista.listarArtistas();
+                                        Iterator<Artista> iter = listaArtista.iterator();
+                                        Artista art = null;
+                                        while (iter.hasNext()) {
+                                            art = iter.next();
+ 
+                                    %> 
+                                    <tbody style="border-collapse: 0;">
+                                        <tr>
+                                            <td id="nombreArt" class="text-center"><%= art.getNombreArtista() %></td>
+                                            <td id="empDifusora" class="text-center"><%= art.getNombreEmp() %></td>
+                                            <td id="correoArt" class="text-center"><%= art.getCorreo()  %></td>
+                                            <td id="telefonoArt" class="text-center" ><%= art.getTelefono() %></td>
+                                            <td id="estadoArt" class="text-center"><%= art.getEstado() %></td>
 
-                                <form method="post" class="form-group" id="agregarEmpresa" action="ServletEmpresa"  name="crearEmp">
-                                    <input type="hidden" name="operacion" id="operacion" value="crear" >  
-                                    <label for="idEmpresa" style="display: none;">Id Empresa </label>
-                                    <input type="hidden" name="idEmpresa" id="idEmpresa" value="0" >
-                                    <div class="form-inline">
-                                        <label class="control-label col-sm-5" for="nombreEmp">Nombre empresa:</label>
-                                        <div class="col-sm-6"> 
-                                            <input type="text" class="form-control" id="nombreEmp" name="nombreEmp" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-inline">
-                                        <label class="control-label col-sm-5" for="nit">NIT:</label>
-                                        <div class="col-sm-6"> 
-                                            <input type="number" class="form-control" id="nit" name="nit" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-inline">
-                                        <label class="control-label col-sm-5" for="telefono">Telefono:</label>
-                                        <div class="col-sm-6"> 
-                                            <input type="number" class="form-control" id="telefono" name="telefono" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-inline">
-                                        <label class="control-label col-sm-5" for="valorOperacion">Valor operación:</label>
-                                        <div class="col-sm-6"> 
-                                            <input type="number" class="form-control" id="valorOperacion" name="valorOperacion" required>
-                                        </div>
-                                    </div><br>
-                                    <div class="form-inline">
-                                        <label class="control-label col-sm-5" for="tipoOperacion">Tipo Operación:</label>
-                                        <div class="col-sm-6"> 
-                                            <select  class="form-control" id="tipoOperacion" name="tipoOperacion"  required>
+                                            <td class="text-center">
+                                                <a id="editarArt" class="btn btn-warning" href="ServletArtista?opcion=editar&IdArtista=<%= art.getIdArtista() %>">Editar</a>
+                                                
+                                            </td>
+                                        </tr>
+                                        <%}--%> 
+                                    </tbody>
 
-                                                <%
-
-                                                    DAOTipoOperacion tipoOperacion = new DAOTipoOperacion();
-                                                    List<TipoOperacion> listaTipoOperacion = tipoOperacion.obtenerTipoOperacion();
-                                                    Iterator<TipoOperacion> iter = listaTipoOperacion.iterator();
-                                                    TipoOperacion oper = null;
-                                                    out.println("<option >Seleccionar: </option>");
-                                                    while (iter.hasNext()) {
-                                                        oper = iter.next();
-
-                                                        out.println("<option value='" + oper.getIdTipoOperacion() + "' >" + oper.getDescripcion() + "</option>");
-                                                    }
-                                                %>
-                                            </select>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group modal-footer"> 
-                                        <div class="col-sm-offset-3 col-sm-9">
-                                            <!--                                    <button type="submit" class="btn btn-info" >Registrar</button>-->
-                                            <input class="btn btn-primary" type="submit" id="enviarEmp" value="Agregar">
-                                            <a href="ServletEmpresa?opcion=listarEmpresas"><button id="cancel" type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button></a>
-                                        </div>
-                                    </div>
-
-                                </form>
-
+                                </table>
                             </div>
                         </div>
                     </section>
                 </section>
-
-            </div>
-            <!-- /#page-content-wrapper -->
+                </div>
+            
+            
 
         </div>
+
         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
         <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.js" type="text/javascript"></script>
-        
 
     </body>
 </html>

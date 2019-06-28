@@ -5,13 +5,13 @@
  */
 
 function validate() {
-    var nombreArtista = document.getElementById("nameArt").value;
+    var nombreArtista = document.getElementById("nombreArt").value;
     var empresa = $("select option:selected").val();
     var telefono = document.getElementById("phoneArt").value;
     
     var camposValidos = true;
     
-    if (nombreArtista.length <= 3) {
+    if (nombreArtista.length < 2) {
         camposValidos = false;
         alert(nombreArtista + "  El nombre debe ser mayor de 3 digitos");
     }
@@ -30,3 +30,4 @@ function validate() {
 }
 
 document.getElementById("enviarArt").onclick = validate;
+

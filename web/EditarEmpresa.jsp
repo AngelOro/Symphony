@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
         <link rel="stylesheet" href="css/simple-sidebar.css" type="text/css">
         <link rel="stylesheet" href="css/bootstrap-grid.css" type="text/css">
+        <script defer src="js/validacion/EditarEmpresa.js" type="text/javascript"></script>
 
     </head>
     <body>
@@ -31,9 +32,10 @@
                     <li class="menu">
                         <a href="#" class="list-group-item list-group-item-action bg-light">Gestión</a>
                         <ul class="sub-menu">
-                            <li><a href="Empresa.jsp" class="list-group-item list-group-item-action bg-light">Empresas</a></li>
+                           <li><a href="Empresa.jsp" class="list-group-item list-group-item-action bg-light">Empresas</a></li>
                             <li><a href="Artista.jsp" class="list-group-item list-group-item-action bg-light">Artistas</a></li>
                             <li><a href="Empresa.jsp" class="list-group-item list-group-item-action bg-light">Ventas</a></li>
+                            <li><a href="Operario.jsp" class="list-group-item list-group-item-action bg-light">Operarios</a></li>
                         </ul>
                     </li>
                     <li class="menu">
@@ -104,7 +106,7 @@
                                     <div class="form-inline">
                                         <label class="control-label col-sm-5" for="idEmpresa" >Id Empresa </label>
                                         <div class="col-sm-6"> 
-                                            <% out.println("<input class='form-control' type='text' name='idEmpresa' id='idEmpresa' readonly value='"
+                                            <% out.println("<input class='form-control' type='number' name='idEmpresa' id='idEmpresa' readonly value='"
                                                     + e.getIdEmpresa() + "'/><br>"); %> 
                                         </div>
                                     </div>
@@ -118,21 +120,21 @@
                                     <div class="form-inline">
                                         <label class="control-label col-sm-5" for="nit">NIT:</label>
                                         <div class="col-sm-6"> 
-                                            <% out.println("<input class='form-control' type='text' name='nit' id='nit' value='"
+                                            <% out.println("<input class='form-control' type='number' name='nit' id='nit' value='"
                                                         + e.getNit() + "'/><br>"); %>
                                         </div>
                                     </div>
                                     <div class="form-inline">
                                         <label class="control-label col-sm-5" for="telefono">Telefono:</label>
                                         <div class="col-sm-6"> 
-                                            <% out.println("<input class='form-control' type='text' name='telefono' id='telefono' value='"
+                                            <% out.println("<input class='form-control' type='number' name='telefono' id='telefono' value='"
                                                         + e.getTelefono() + "'/><br>"); %>
                                         </div>
                                     </div>
                                     <div class="form-inline">
                                         <label class="control-label col-sm-5" for="valorOperacion">Valor operación:</label>
                                         <div class="col-sm-6"> 
-                                            <% out.println("<input class='form-control' type='text' name='valorOperacion' id='valorOperacion' value='"
+                                            <% out.println("<input class='form-control' type='number' name='valorOperacion' id='valorOperacion' value='"
                                                         + e.getValorOperacion() + "'/><br>"); %>
                                         </div>
                                     </div><br>
@@ -144,7 +146,7 @@
                                                 <%
 
                                                     List<TipoOperacion> listaTipoOperacion = (List<TipoOperacion>) request.getAttribute("listaTipoOperacion");
-                                                    out.println("<option >Seleccionar: </option>");
+                                                    out.println("<option value='0' >Seleccionar: </option>");
                                                     for (TipoOperacion TO : listaTipoOperacion) {
                                                         if (TO.getIdTipoOperacion() == e.getIdTipoOperacion()) {
                                                             out.println("<option value='" + TO.getIdTipoOperacion()
@@ -163,7 +165,7 @@
                                     <div class="form-group modal-footer"> 
                                         <div class="col-sm-offset-3 col-sm-9">
                                             <!--                                    <button type="submit" class="btn btn-info" >Registrar</button>-->
-                                            <input class="btn btn-primary" type="submit" name="enviarEmp" value="Editar">
+                                            <input class="btn btn-primary" type="submit" id="enviarEmp" name="enviarEmp" value="Editar">
                                             <a href="ServletEmpresa?opcion=listarEmpresas"><button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button></a>
                                         </div>
                                     </div>
